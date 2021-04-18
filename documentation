@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" style = "height: 100%;">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>JS Libraries Documentation</title>
+
+    <!------- Loading JS scripts ------->
+    <!-- When loading JS scripts, considerations should be made regarding when
+         the DOM is being loaded, and when different scripts 
+         depend on each other. Below are examples of a few different ways to load the scripts.
+     -->
+
+     <!-- Load any CSS before the JS in case you need to access styles in your scripts. -->
+     <!-- <link rel="stylesheet" type="text/css" href="someStylesheet.css"> -->
+
+    <!-- If you don't use either 'async' or 'defer', the HTML parsing/DOM loading is blocked until the script is downloaded and executed. -->
+    <!-- Since it is the top script on the page, it will block 
+      before loading everything under it (including the <body>).  -->
+    <script src="dom_load.js"></script>
+
+    <!-- 'defer' states that the script should be executed after the HTML is parsed.
+         If multiple scripts have 'defer', they are loaded one after the other.  
+         This will guarantee execution order, and ensure that scripts that depend on each other load
+         in an order that will not cause errors. -->
+    <!-- First we load jquery from a Google CDN (content delivery network). -->
+    <script defer src="jquery-1.11.1.min.js"></script>
+    <!-- Then we load a script that depends on jQuery -->
+    <!--<script defer type="text/javascript" src='shop.js'></script>-->
+    <!-- Then we load a script that depends on our libraries (and jQuery) -->
+    <!--<script defer type="text/javascript" src='examples.js'></script>-->
+
+    <!-- 
+    - 'async' states that it is safe to download the script without blocking 
+    HTML parsing, and execute  once downloaded (DOM loading, if not completed, pauses during script execution).
+    This allows for quicker loading of the DOM content while waiting for scripts to download.
+    Note that if multiple scripts are 'async', their order
+    of loading is *not* guaratneed, and async scripts may also be executed after 
+    the 'DOMContentLoaded' event is fired (we make up for this in the dom_load_async.js file).
+    * General rule: don't use async on scripts that depend on each other. *
+     Often scripts like ads and analytics are loaded async since they don't depend
+     on other scipts.
+    -->
+    <script async type="text/javascript" src='dom_load_async.js'></script>
+
+ </head>
+ <body style="height: 100%;">
+   <header style = " width: 980px; height: 70px; background-color: rgba(250, 235, 215, 0.808);border-bottom: 3px solid rgba(255, 60, 0, 0.897); margin: 0 auto;">
+      <ul style = "width: 980px; margin: 0 auto; list-style-type: none;" >
+          <li style = "float: left;"><a href="#" style ="display: inline-block; height: 70px;text-decoration: none;line-height: 70px; width: 120px;text-align: center;color: rgba(255, 60, 0, 0.788); font-size:40px">Shopshop.js</a> </li>
+       
+      </ul>
+   </header>
+  
+
+    <div style= "margin: 0 auto;width: 908px;height: 820px; background-color: rgba(7, 232, 248, 0.384); padding: 10px 36px 5px;">
+      <a style = " font-size: 30px; color: rgba(4, 3, 65, 0.849); font-weight: bold;  text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         Methods
+      </a>
+      
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Create a default background image
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.makeBackground()
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Make a navigation bar at the top of the webpage
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.makeHeader()
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Create a category block
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.arrangeone()
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Make a row of product info blocks
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.makeRow()
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Insert an image of the item to the product info box
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeImg(0, './style/images/vm.png')
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Insert the price of the product
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changePrice(0, '$100')
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Change the introduction of the product
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeIntro(0, 'Vero Moda 2021 Spring Dress')
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Change the link of the product
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeLink(0, 'https://detail.tmall.com/item.htm?spm=a220o.1000855.0.da321h.47e66911bpKwBz&id=634027553104&sku_properties=1627207:1614671958')
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Insert the sales of the product
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeSa(0, 'sale amount  200')
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Change the background image of the webpage
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeBackgroundImg(0, './style/images/bg1.jpg') 
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Change the logo image of the webpage
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeHeaderLogo(0, './style/images/logo3.png')
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Change the text of the top navigation bar
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeHeaderText(0, 'Women') 
+      </a>
+      <a style = " color: rgb(112, 112, 112); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         //Change the name of the category
+      </a>
+      <a style = "color: rgb(23, 157, 247); font-weight: normal; text-decoration: none; font-family: 汉仪柳楷繁; display: block; margin: 10px auto;">
+         g.changeBannerText(0, 'Bag')  
+      </a>
+
+    </div>
+    
+ </body>
+
+</html>
